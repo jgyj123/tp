@@ -20,9 +20,13 @@
 
             <VBox alignment="CENTER" fx:id="helpMessageContainer">
                 <children>
+                    <Label fx:id="assessmentSubject" text="Label">
+                    </Label>
                     <Label fx:id="assessmentName" text="Label">
                     </Label>
                     <Label fx:id="assessmentWeightage" text="Label">
+                    </Label>
+                    <Label fx:id="assessmentTotalScore" text="Label">
                     </Label>
                     <Label fx:id="studentName" text="Label">
                     </Label>

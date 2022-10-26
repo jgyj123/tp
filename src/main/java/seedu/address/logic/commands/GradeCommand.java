@@ -29,19 +29,18 @@ public class GradeCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Grades for Subject %s, Assessment %s has been updated!";
 
     private final String subject;
-    private final String assessment;
-    private final int mode;
+    private final String assessmentString;
+
 
     /**
      * Creates a GradeCommand to edit the grades of the specified {@code Subject}
      *
      * @param subject        the Subject to edit grades for
-     * @param assessmentName the name of the assessment to edit grades for
+     * @param assessmentString the name of the assessment to edit grades for
      */
-    public GradeCommand(String subject, String assessmentName, int mode) {
+    public GradeCommand(String subject, String assessmentString) {
         this.subject = subject;
-        this.assessment = assessmentName;
-        this.mode = mode;
+        this.assessmentString = assessmentString;
     }
 
     @Override
@@ -49,7 +48,7 @@ public class GradeCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         List<Person> personList = model.getFilteredPersonList();
-        return new CommandResult(MESSAGE_SUCCESS, true, personList);
+        return new CommandResult(MESSAGE_SUCCESS, true, personList, assessmentString);
     }
 
 }

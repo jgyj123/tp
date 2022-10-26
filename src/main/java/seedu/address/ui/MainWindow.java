@@ -175,9 +175,9 @@ public class MainWindow extends UiPart<Stage> {
      * for the queried subject.
      */
     @FXML
-    public void handleGrade(List<Person> personList) {
+    public void handleGrade(List<Person> personList, String assessmentString) {
         if (!gradeWindow.isShowing()) {
-            gradeWindow.show(personList);
+            gradeWindow.show(personList, assessmentString);
         } else {
             gradeWindow.focus();
         }
@@ -223,7 +223,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isShowGradeWindow()) {
-                handleGrade(commandResult.getStudentsToGrade());
+                handleGrade(commandResult.getStudentsToGrade(), commandResult.getAssessmentString());
             }
 
             if (commandResult.isExit()) {

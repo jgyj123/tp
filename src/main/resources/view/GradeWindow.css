@@ -1,4 +1,4 @@
-#copyButton, #assessmentName, #assessmentWeightage, #studentClass, #studentName {
+#copyButton, #assessmentName, #assessmentWeightage, #assessmentTotalScore, #assessmentSubject, #studentClass, #studentName {
     -fx-text-fill: white;
 }
 

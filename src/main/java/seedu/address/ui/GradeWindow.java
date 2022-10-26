@@ -26,9 +26,8 @@ import seedu.address.model.person.Person;
 public class GradeWindow extends UiPart<Stage> {
     private static final Logger logger = LogsCenter.getLogger(GradeWindow.class);
     private static final String FXML = "GradeWindow.fxml";
-    private boolean gradeEntered = true;
+    private String assessmentString;
     private int index = 0;
-    private boolean adding = true;
     List<Person> personList;
 
     @FXML
@@ -39,9 +38,14 @@ public class GradeWindow extends UiPart<Stage> {
     @FXML
     private Label assessmentWeightage;
     @FXML
+    private Label studentClass;
+    @FXML
     private Label studentName;
     @FXML
-    private Label studentClass;
+    private Label assessmentSubject;
+    @FXML
+    private Label assessmentTotalScore;
+
 
 
     /**
@@ -80,9 +84,10 @@ public class GradeWindow extends UiPart<Stage> {
      *                               </li>
      *                               </ul>
      */
-    public void show(List<Person> personList) {
+    public void show(List<Person> personList, String assessmentString) {
         logger.fine("Showing help page about the application.");
         this.personList = personList;
+        this.assessmentString = assessmentString;
         getRoot().show();
         getRoot().centerOnScreen();
         updateUI();
@@ -92,15 +97,25 @@ public class GradeWindow extends UiPart<Stage> {
         if (index > personList.size()) {
             return;
         }
+        //parse assesment string
+        String[] parsedString = assessmentString.split("_");
+        String subject = parsedString[0].trim();
+        String name = parsedString[1].trim();;
+        String totalScore = parsedString[2].trim();;
+        String weightage = parsedString[3].trim();;
         Person currentPerson = personList.get(index);
-        gradeEntered = false;
-        assessmentName.setText("Example Assessment");
-        assessmentWeightage.setText("60%");
-        studentName.setText(currentPerson.getName().toString());
-        studentClass.setText("1.2");
+        assessmentSubject.setText("Subject: " + subject);
+        assessmentName.setText("Assessment: " + name);
+        assessmentWeightage.setText("Weightage: " + weightage);
+        assessmentTotalScore.setText("Total Score: " + totalScore);
+        studentName.setText("Student Name: " + currentPerson.getName().toString());
+        studentClass.setText("Student Class: " + "TBC");
         return;
     }
 
+    public void updateGradesForCurrentStudent(String mark) {
+
+    }
     /**
      * Returns true if the help window is currently being shown.
      */

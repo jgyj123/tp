@@ -19,8 +19,10 @@ public class GradeCommandParser implements Parser<GradeCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public GradeCommand parse(String args) throws ParseException {
-
-            return new GradeCommand("math", "CA1", 1);
+        // grade math-CA1-100-0.5-1.0 - format: subject-assessmentName-totalScore-weightage-difficulty
+        //need to check for erroneous input
+            String subject = args.split("_")[0].trim();
+            return new GradeCommand(subject, args.trim());
 
     }
 

@@ -34,6 +34,8 @@ public class CommandResult {
     private final boolean showGradeWindow;
 
     private List<Person> studentsToGrade;
+
+    private String assessmentString;
     /**
      *
      */
@@ -61,9 +63,11 @@ public class CommandResult {
     public CommandResult(String feedbackToUser) {
         this(feedbackToUser, false, false, false,false, "0.0");
     }
-    public CommandResult(String feedbackToUser, boolean showGradeWindow, List<Person> studentsToGrade) {
+    public CommandResult(String feedbackToUser, boolean showGradeWindow,
+                         List<Person> studentsToGrade, String assessmentString) {
         this(feedbackToUser, false, false, false, true, "0.0");
         this.studentsToGrade = studentsToGrade;
+        this.assessmentString = assessmentString;
     }
     public String getFeedbackToUser() {
         return feedbackToUser;
@@ -89,6 +93,7 @@ public class CommandResult {
     public List<Person> getStudentsToGrade() {
         return studentsToGrade;
     }
+    public String getAssessmentString() {return assessmentString;}
     @Override
     public int hashCode() {
         return Objects.hash(feedbackToUser, showHelp, exit);
